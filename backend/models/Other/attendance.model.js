@@ -5,12 +5,13 @@ const Attendance = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    presentDates: {
-        type: {}, // subject: date
-    },
-    absentDates: {
-        type: {}, // subject: date
-    },
-}, {timestamps: true});
+    records: [
+        {
+            subject: { type: String, required: true },
+            date: { type: Date, required: true },
+            status: { type: String, enum: ['Present', 'Absent'], required: true }
+        }
+    ]
+}, { timestamps: true });
 
 module.exports = mongoose.model("Attendance", Attendance);

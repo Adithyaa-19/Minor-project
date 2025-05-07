@@ -45,13 +45,15 @@ const Attendance = () => {
             const status = document.querySelector(
                 `input[name="${enroll.id}-status"]:checked`
             )?.value;
+
             if (status) {
                 const payload = {
                     enrollmentNo: enroll.id,
-                    [status === "present" ? "presentDates" : "absentDates"]: {
-                        [selected.subject]: selected.date,
-                    },
+                    subject: selected.subject,
+                    date: selected.date,
+                    status: status === "present" ? "Present" : "Absent"
                 };
+
                 setStudentAttendanceHandler(payload);
             }
         });
@@ -72,6 +74,7 @@ const Attendance = () => {
                 toast.error(error.message);
             });
     };
+
 
     const getBranchData = () => {
         axios
