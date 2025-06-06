@@ -53,6 +53,12 @@ const StudentAttendance = () => {
         }
     }, [userData.enrollmentNo]);
 
+    const calculatePercentage = (records) => {
+        const total = records.length;
+        const presentCount = records.filter((entry) => entry.status === "Present").length;
+        return ((presentCount / total) * 100).toFixed(2); // 2 decimal places
+    };
+
     return (
         <div className="w-full mx-auto mt-10 flex justify-center items-start flex-col mb-10">
             <Heading title={`Attendance for Semester ${userData.semester}`} />
@@ -65,9 +71,15 @@ const StudentAttendance = () => {
                             key={subject}
                             className="w-full md:w-[45%] shadow-md p-6 rounded-md bg-gray-50"
                         >
-                            <h3 className="text-xl font-semibold border-b-2 border-blue-400 pb-2 mb-4">
+                            <h3 className="text-xl font-semibold border-b-2 border-blue-400 pb-2 mb-2">
                                 {subject}
                             </h3>
+                            <p className="text-sm mb-4 text-gray-700">
+                                Attendance Percentage:{" "}
+                                <span className="font-semibold text-blue-600">
+                                    {calculatePercentage(records)}%
+                                </span>
+                            </p>
                             <ul className="space-y-2">
                                 {records.map((entry, index) => (
                                     <li

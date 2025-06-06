@@ -84,7 +84,7 @@ const Home = () => {
                 }`}
                 onClick={() => setSelectedMenu("Notice")}
               >
-                Notice
+                Assignment
               </li>
             </ul>
             {selectedMenu === "Timetable" && <Timetable />}

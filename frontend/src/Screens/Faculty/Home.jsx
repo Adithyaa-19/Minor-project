@@ -76,7 +76,7 @@ const Home = () => {
                 }`}
                 onClick={() => setSelectedMenu("Notice")}
               >
-                Notice
+              Assignment
               </li>
               {/*<li*/}
               {/*  className={`text-center rounded-sm px-4 py-2 w-1/5 cursor-pointer ease-linear duration-300 hover:ease-linear hover:duration-300 hover:transition-all transition-all ${*/}

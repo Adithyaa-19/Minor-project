@@ -67,7 +67,19 @@ const deleteAttendance = async (req, res) => {
         if (!record) {
             return res.status(404).json({ success: false, message: "No attendance record found to delete." });
         }
-        res.json({ success: true, message: "Attendance record deleted." });
+
+        // Recalculate percentage for the enrollment
+        const { enrollmentNo } = req.body; // Or extract from deleted record if available
+        const existing = await AttendanceModel.findOne({ enrollmentNo });
+
+        let percentage = 0;
+        if (existing) {
+            let totalClasses = existing.records.length;
+            let attendedClasses = existing.records.filter(entry => entry.status === 'Present').length;
+            percentage = (totalClasses > 0) ? (attendedClasses / totalClasses) * 100 : 0;
+        }
+
+        res.json({ success: true, message: "Attendance record deleted.", percentage: percentage.toFixed(2) });
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ success: false, message: "Internal Server Error" });

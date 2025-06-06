@@ -181,7 +181,7 @@ const Notice = () => {
   return (
     <div className="w-full mx-auto flex justify-center items-start flex-col my-10">
       <div className="relative flex justify-between items-center w-full">
-        <Heading title="Notices" />
+        <Heading title="Assignment" />
         {(router.pathname === "/faculty" || router.pathname === "/admin") &&
           (open ? (
             <button
@@ -198,7 +198,7 @@ const Notice = () => {
               className="absolute right-2 flex justify-center items-center border-2 border-red-500 px-3 py-2 rounded text-red-500"
               onClick={openHandler}
             >
-              Add Notice
+              Add Assignment
               <span className="ml-2">
                 <IoAddOutline className="text-red-500 text-xl" />
               </span>
@@ -270,7 +270,7 @@ const Notice = () => {
       {open && (
         <form className="mt-8 w-full">
           <div className="w-[40%] mt-2">
-            <label htmlFor="title">Notice Title</label>
+            <label htmlFor="title"> Title</label>
             <input
               type="text"
               id="title"
@@ -280,7 +280,7 @@ const Notice = () => {
             />
           </div>
           <div className="w-[40%] mt-4">
-            <label htmlFor="title">Notice Description</label>
+            <label htmlFor="title">Assignment Description</label>
             <textarea
               id="title"
               cols="30"
@@ -292,7 +292,7 @@ const Notice = () => {
               }
             ></textarea>
           </div>
-          <div className="w-[40%] mt-4">
+          {/* <div className="w-[40%] mt-4">
             <label htmlFor="link">Notice Link (If any else leave blank)</label>
             <input
               type="text"
@@ -301,8 +301,8 @@ const Notice = () => {
               className="bg-blue-50 py-2 px-4 w-full mt-1"
               onChange={(e) => setData({ ...data, link: e.target.value })}
             />
-          </div>
-          <div className="w-[40%] mt-4">
+          </div> */}
+          {/* <div className="w-[40%] mt-4">
             <label htmlFor="type">Type Of Notice</label>
             <select
               id="type"
@@ -314,7 +314,7 @@ const Notice = () => {
               <option value="faculty">Faculty</option>
               <option value="both">Both</option>
             </select>
-          </div>
+          </div> */}
           {edit && (
             <button
               onClick={updateNoticehandler}
@@ -328,7 +328,7 @@ const Notice = () => {
               onClick={addNoticehandler}
               className="bg-blue-500 text-white mt-6 px-6 rounded text-lg py-2 hover:bg-blue-600"
             >
-              Add Notice
+              Add Assignment
             </button>
           )}
         </form>
